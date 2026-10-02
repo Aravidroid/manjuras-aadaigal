@@ -1,0 +1,520 @@
+<%
+  const title = "Manjura's Aadaigal — Premium Indian Women's Fashion";
+  const description = 'Discover exquisite Indian ethnic wear — sarees, kurtis, chudidars and more. Curated with love for the modern Indian woman.';
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#6B1A1A"/>
+  <title><%= title %></title>
+  <meta name="description" content="<%= description %>"/>
+  <meta name="keywords" content="Indian ethnic wear, sarees, kurtis, chudidars, women fashion India, Manjura's Aadaigal"/>
+  <meta property="og:title" content="<%= title %>"/>
+  <meta property="og:description" content="<%= description %>"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://manjurasaadaigal.in"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml"/>
+</head>
+<body>
+
+  <%- include('./partials/announcement-bar') %>
+  <%- include('./partials/header') %>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════
+         HERO SECTION
+    ═══════════════════════════════════════════ -->
+    <section id="hero" class="relative min-h-[92vh] flex items-end overflow-hidden bg-[var(--color-cream-dark)]">
+
+      <!-- Background Image -->
+      <div class="absolute inset-0 hero-parallax" id="hero-bg">
+        <img
+          src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1800&auto=format&fit=crop&q=80"
+          alt="Elegant Indian woman in traditional attire"
+          class="w-full h-full object-cover object-center"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <!-- Overlay -->
+        <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(42,14,10,0.72) 0%, rgba(42,14,10,0.35) 55%, transparent 100%);"></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-16 pb-20 lg:pb-28 pt-16 w-full">
+        <div class="max-w-2xl">
+          <p class="section-label text-[var(--color-sandal-light)] mb-5 fade-up" style="animation-delay:0.1s">New Season Collection</p>
+          <h1 class="font-display font-light text-[3.2rem] sm:text-[4.5rem] lg:text-[5.5rem] leading-[1.0] text-[var(--color-cream)] mb-6 fade-up" style="animation-delay:0.2s">
+            Grace<br/>
+            <em class="italic font-light">Woven</em><br/>
+            Into Every<br/>Thread
+          </h1>
+          <p class="font-body font-light text-base lg:text-lg text-[var(--color-sandal-light)] mb-10 max-w-md leading-relaxed fade-up" style="animation-delay:0.3s">
+            Handpicked Indian ethnic wear that celebrates the artistry of our weavers and the spirit of the modern Indian woman.
+          </p>
+          <div class="flex flex-wrap gap-4 fade-up" style="animation-delay:0.4s">
+            <a href="/collections" class="btn-primary"><span>Explore Collection</span></a>
+            <a href="/new-arrivals" class="btn-outline" style="border-color:var(--color-sandal-light);color:var(--color-cream);">
+              <span style="color:var(--color-cream)">New Arrivals</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 right-8 lg:right-16 z-10 flex flex-col items-center gap-3">
+        <span class="font-body text-[0.6rem] tracking-[0.3em] uppercase text-[var(--color-sandal-light)] writing-mode-vertical" style="writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.25em">Scroll</span>
+        <div class="w-px h-12 bg-[var(--color-sandal-light)] opacity-60 scroll-line"></div>
+      </div>
+
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         MARQUEE STRIP
+    ═══════════════════════════════════════════ -->
+    <div class="py-4 bg-[var(--color-maroon)] overflow-hidden">
+      <div class="marquee-track text-[var(--color-sandal-light)] font-body text-xs tracking-[0.25em] uppercase">
+        <span>✦ Sarees</span><span>✦ Kurtis</span><span>✦ Chudidars</span><span>✦ Anarkali</span><span>✦ Lehengas</span><span>✦ Silk</span><span>✦ Cotton</span><span>✦ Handloom</span><span>✦ Embroidery</span><span>✦ Festive Wear</span>
+        <span>✦ Sarees</span><span>✦ Kurtis</span><span>✦ Chudidars</span><span>✦ Anarkali</span><span>✦ Lehengas</span><span>✦ Silk</span><span>✦ Cotton</span><span>✦ Handloom</span><span>✦ Embroidery</span><span>✦ Festive Wear</span>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════
+         SHOP BY CATEGORY
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 lg:py-28 px-6 lg:px-12 max-w-[1440px] mx-auto">
+      <div class="text-center mb-14 fade-up">
+        <p class="section-label mb-3">Shop By Category</p>
+        <h2 class="section-title text-4xl lg:text-5xl">Find Your<br/><em class="italic">Perfect Style</em></h2>
+      </div>
+
+      <!-- Category Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+
+        <!-- Large card: Sarees -->
+        <a href="/category/sarees" class="category-card lg:row-span-2 fade-up">
+          <div class="category-card-image" style="height: 100%; min-height: 340px;">
+            <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800&auto=format&fit=crop&q=80" alt="Sarees" loading="lazy"/>
+            <div class="category-card-overlay"></div>
+          </div>
+          <div class="category-card-content">
+            <p class="font-body text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-sandal-light)] mb-1">Explore</p>
+            <h3 class="font-display font-light text-3xl text-[var(--color-cream)]">Sarees</h3>
+            <p class="font-body text-sm text-[var(--color-sandal-light)] mt-1 opacity-0 group-hover:opacity-100 transition-opacity">120+ styles</p>
+          </div>
+        </a>
+
+        <!-- Kurtis -->
+        <a href="/category/kurtis" class="category-card fade-up" style="animation-delay:0.1s">
+          <div class="category-card-image" style="height: 240px;">
+            <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b5ca4?w=600&auto=format&fit=crop&q=80" alt="Kurtis" loading="lazy"/>
+            <div class="category-card-overlay"></div>
+          </div>
+          <div class="category-card-content" style="padding:1.25rem">
+            <p class="font-body text-[0.6rem] tracking-[0.2em] uppercase text-[var(--color-sandal-light)] mb-1">Explore</p>
+            <h3 class="font-display font-light text-2xl text-[var(--color-cream)]">Kurtis</h3>
+          </div>
+        </a>
+
+        <!-- Chudidars -->
+        <a href="/category/chudidars" class="category-card fade-up" style="animation-delay:0.15s">
+          <div class="category-card-image" style="height: 240px;">
+            <img src="https://images.unsplash.com/photo-1585944672832-a1f04bc93c0e?w=600&auto=format&fit=crop&q=80" alt="Chudidars" loading="lazy"/>
+            <div class="category-card-overlay"></div>
+          </div>
+          <div class="category-card-content" style="padding:1.25rem">
+            <p class="font-body text-[0.6rem] tracking-[0.2em] uppercase text-[var(--color-sandal-light)] mb-1">Explore</p>
+            <h3 class="font-display font-light text-2xl text-[var(--color-cream)]">Chudidars</h3>
+          </div>
+        </a>
+
+        <!-- Dresses -->
+        <a href="/category/dresses" class="category-card fade-up" style="animation-delay:0.2s">
+          <div class="category-card-image" style="height: 240px;">
+            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&auto=format&fit=crop&q=80" alt="Dresses" loading="lazy"/>
+            <div class="category-card-overlay"></div>
+          </div>
+          <div class="category-card-content" style="padding:1.25rem">
+            <p class="font-body text-[0.6rem] tracking-[0.2em] uppercase text-[var(--color-sandal-light)] mb-1">Explore</p>
+            <h3 class="font-display font-light text-2xl text-[var(--color-cream)]">Dresses</h3>
+          </div>
+        </a>
+
+        <!-- Collections -->
+        <a href="/collections" class="category-card fade-up" style="animation-delay:0.25s">
+          <div class="category-card-image" style="height: 240px;">
+            <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&auto=format&fit=crop&q=80" alt="Collections" loading="lazy"/>
+            <div class="category-card-overlay"></div>
+          </div>
+          <div class="category-card-content" style="padding:1.25rem">
+            <p class="font-body text-[0.6rem] tracking-[0.2em] uppercase text-[var(--color-sandal-light)] mb-1">Explore</p>
+            <h3 class="font-display font-light text-2xl text-[var(--color-cream)]">Collections</h3>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         NEW ARRIVALS
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 lg:py-24 bg-[var(--color-offwhite)]">
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+
+        <div class="flex items-end justify-between mb-12 fade-up">
+          <div>
+            <p class="section-label mb-2">Just In</p>
+            <h2 class="section-title text-4xl lg:text-5xl">New Arrivals</h2>
+          </div>
+          <a href="/new-arrivals" class="btn-ghost hidden lg:flex"><span>View All</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+
+          <% const newArrivals = [
+            { name: 'Kanjivaram Silk Saree', price: 4899, originalPrice: 6200, img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=500&auto=format&fit=crop&q=80&crop=top', badge: 'New', slug: 'kanjivaram-silk-saree' },
+            { name: 'Chanderi Block Print Kurti', price: 1299, originalPrice: null, img: 'https://images.unsplash.com/photo-1594938298603-c8148c4b5ca4?w=500&auto=format&fit=crop&q=80', badge: 'New', slug: 'chanderi-block-print-kurti' },
+            { name: 'Anarkali Embroidered Set', price: 2799, originalPrice: 3500, img: 'https://images.unsplash.com/photo-1585944672832-a1f04bc93c0e?w=500&auto=format&fit=crop&q=80', badge: 'Sale', slug: 'anarkali-embroidered-set' },
+            { name: 'Pashmina Shawl Chudidar', price: 3199, originalPrice: null, img: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=500&auto=format&fit=crop&q=80', badge: 'New', slug: 'pashmina-shawl-chudidar' }
+          ]; %>
+
+          <% newArrivals.forEach((p, i) => { %>
+          <div class="product-card group fade-up" style="animation-delay:<%= i * 0.08 %>s">
+            <div class="product-card-image">
+              <img src="<%= p.img %>" alt="<%= p.name %>" loading="lazy"/>
+              <!-- Badge -->
+              <div class="absolute top-3 left-3 z-10">
+                <% if (p.badge === 'Sale') { %><span class="badge-sale"><%= p.badge %></span>
+                <% } else { %><span class="badge-new"><%= p.badge %></span><% } %>
+              </div>
+              <!-- Hover actions -->
+              <div class="product-card-actions">
+                <a href="/product/<%= p.slug %>" class="product-card-quick-add">Add to Cart</a>
+                <a href="/product/<%= p.slug %>" class="w-10 flex items-center justify-center bg-[var(--color-cream)] text-[var(--color-maroon)] hover:bg-[var(--color-maroon)] hover:text-[var(--color-cream)] transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="p-3 lg:p-4 bg-[var(--color-offwhite)]">
+              <a href="/product/<%= p.slug %>">
+                <h3 class="font-body font-medium text-sm text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors leading-snug"><%= p.name %></h3>
+              </a>
+              <div class="mt-1.5 flex items-center gap-2">
+                <span class="font-body font-semibold text-sm text-[var(--color-maroon)]">₹<%= p.price.toLocaleString('en-IN') %></span>
+                <% if (p.originalPrice) { %>
+                <span class="font-body text-xs text-[var(--color-text-muted)] line-through">₹<%= p.originalPrice.toLocaleString('en-IN') %></span>
+                <span class="font-body text-[0.65rem] text-green-700 font-medium"><%= Math.round((1 - p.price/p.originalPrice)*100) %>% off</span>
+                <% } %>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+
+        </div>
+
+        <div class="mt-10 text-center lg:hidden">
+          <a href="/new-arrivals" class="btn-outline inline-flex"><span>View All New Arrivals</span></a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         FEATURED COLLECTION BANNER
+    ═══════════════════════════════════════════ -->
+    <section class="relative overflow-hidden" style="min-height: 70vh;">
+      <img
+        src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1600&auto=format&fit=crop&q=80&crop=right"
+        alt="Featured Collection — Heritage Weavers"
+        class="absolute inset-0 w-full h-full object-cover object-center"
+        loading="lazy"
+      />
+      <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(42,14,10,0.80) 0%, rgba(42,14,10,0.4) 50%, transparent 100%);"></div>
+      <div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-16 flex items-center" style="min-height: 70vh;">
+        <div class="max-w-lg fade-up">
+          <p class="section-label text-[var(--color-sandal-light)] mb-4">Featured Collection</p>
+          <h2 class="font-display font-light text-5xl lg:text-6xl text-[var(--color-cream)] leading-tight mb-5">
+            Heritage<br/><em class="italic">Weavers</em><br/>Edit
+          </h2>
+          <p class="font-body font-light text-[var(--color-sandal-light)] text-base leading-relaxed mb-8 max-w-sm">
+            A curated selection of handwoven masterpieces from the looms of Tamil Nadu, Andhra and Bengal — each telling a story of generations.
+          </p>
+          <a href="/collections/heritage-weavers" class="btn-primary"><span>Explore Collection</span></a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         BEST SELLERS
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 lg:py-24 bg-[var(--color-cream)]">
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+
+        <div class="text-center mb-12 fade-up">
+          <p class="section-label mb-2">Most Loved</p>
+          <h2 class="section-title text-4xl lg:text-5xl">Best Sellers</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+          <% const bestSellers = [
+            { name: 'Banarasi Silk Saree', price: 5999, originalPrice: 7800, img: 'https://images.unsplash.com/photo-1592609931095-54a2168ae893?w=500&auto=format&fit=crop&q=80', badge: 'Bestseller', slug: 'banarasi-silk-saree' },
+            { name: 'Lucknowi Chikankari Kurti', price: 1799, originalPrice: null, img: 'https://images.unsplash.com/photo-1589810635657-232948472d98?w=500&auto=format&fit=crop&q=80', badge: null, slug: 'lucknowi-chikankari-kurti' },
+            { name: 'Cotton Salwar Set', price: 1499, originalPrice: 1999, img: 'https://images.unsplash.com/photo-1611282712992-2a2756ba3fb5?w=500&auto=format&fit=crop&q=80', badge: 'Sale', slug: 'cotton-salwar-set' },
+            { name: 'Organza Party Wear Saree', price: 3499, originalPrice: null, img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=500&auto=format&fit=crop&q=80', badge: null, slug: 'organza-party-wear-saree' }
+          ]; %>
+
+          <% bestSellers.forEach((p, i) => { %>
+          <div class="product-card group fade-up" style="animation-delay:<%= i * 0.08 %>s">
+            <div class="product-card-image">
+              <img src="<%= p.img %>" alt="<%= p.name %>" loading="lazy"/>
+              <% if (p.badge) { %>
+              <div class="absolute top-3 left-3 z-10">
+                <% if (p.badge === 'Sale') { %><span class="badge-sale"><%= p.badge %></span>
+                <% } else { %><span class="badge-new"><%= p.badge %></span><% } %>
+              </div>
+              <% } %>
+              <div class="product-card-actions">
+                <a href="/product/<%= p.slug %>" class="product-card-quick-add">Add to Cart</a>
+                <a href="/product/<%= p.slug %>" class="w-10 flex items-center justify-center bg-[var(--color-cream)] text-[var(--color-maroon)] hover:bg-[var(--color-maroon)] hover:text-[var(--color-cream)] transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="p-3 lg:p-4">
+              <a href="/product/<%= p.slug %>">
+                <h3 class="font-body font-medium text-sm text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors leading-snug"><%= p.name %></h3>
+              </a>
+              <div class="mt-1.5 flex items-center gap-2">
+                <span class="font-body font-semibold text-sm text-[var(--color-maroon)]">₹<%= p.price.toLocaleString('en-IN') %></span>
+                <% if (p.originalPrice) { %>
+                <span class="font-body text-xs text-[var(--color-text-muted)] line-through">₹<%= p.originalPrice.toLocaleString('en-IN') %></span>
+                <% } %>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+
+        <div class="text-center mt-12 fade-up">
+          <a href="/products" class="btn-outline inline-flex"><span>Shop All Products</span></a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         BRAND STORY
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 lg:py-28 bg-[var(--color-cream-dark)]">
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+          <!-- Image -->
+          <div class="relative fade-up order-2 lg:order-1">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&auto=format&fit=crop&q=80"
+                alt="Our Story — Manjura's Aadaigal"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <!-- Accent block -->
+            <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-[var(--color-maroon)] hidden lg:flex items-center justify-center p-6">
+              <div class="text-center">
+                <div class="font-display font-light text-4xl text-[var(--color-cream)]">15+</div>
+                <div class="font-body text-[0.6rem] tracking-[0.2em] uppercase text-[var(--color-sandal-light)] mt-1">Years of Craft</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class="order-1 lg:order-2 fade-up" style="animation-delay:0.15s">
+            <p class="section-label mb-4">Our Story</p>
+            <h2 class="section-title text-4xl lg:text-5xl mb-6">
+              Rooted in<br/><em class="italic">Tradition,</em><br/>Crafted for<br/>Today
+            </h2>
+            <div class="space-y-4 font-body text-[var(--color-text-secondary)] leading-relaxed">
+              <p>Manjura's Aadaigal was born from a deep love for the women who weave the fabric of Indian culture — both literally and figuratively. Our name, meaning <em>"Women's Garments"</em> in Tamil, is our promise.</p>
+              <p>We partner directly with master artisans from Tamil Nadu, Andhra Pradesh, West Bengal, and Rajasthan — ensuring that every piece you wear carries the soul of its maker.</p>
+              <p>From the shinier silk of Kanchipuram to the earthy cotton of Chettinad, each collection is a curated celebration of India's extraordinary textile heritage.</p>
+            </div>
+            <div class="mt-8 flex gap-12">
+              <div>
+                <div class="font-display font-light text-3xl text-[var(--color-maroon)]">500+</div>
+                <div class="font-body text-xs tracking-wider uppercase text-[var(--color-text-muted)] mt-1">Artisan Partners</div>
+              </div>
+              <div>
+                <div class="font-display font-light text-3xl text-[var(--color-maroon)]">50k+</div>
+                <div class="font-body text-xs tracking-wider uppercase text-[var(--color-text-muted)] mt-1">Happy Customers</div>
+              </div>
+              <div>
+                <div class="font-display font-light text-3xl text-[var(--color-maroon)]">12</div>
+                <div class="font-body text-xs tracking-wider uppercase text-[var(--color-text-muted)] mt-1">States Covered</div>
+              </div>
+            </div>
+            <div class="mt-8">
+              <a href="/our-story" class="btn-ghost"><span>Read Our Story</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         CRAFTSMANSHIP / VALUE PROPS
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 lg:py-24 bg-[var(--color-maroon)]">
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+        <div class="text-center mb-14 fade-up">
+          <p class="section-label text-[var(--color-sandal-light)] mb-3">Why Choose Us</p>
+          <h2 class="font-display font-light text-4xl lg:text-5xl text-[var(--color-cream)]">The Manjura<br/><em class="italic">Promise</em></h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <% const promises = [
+            { icon: '🪡', title: 'Handcrafted Excellence', desc: 'Every garment is handpicked from master artisans who have honed their craft over generations.' },
+            { icon: '🌿', title: 'Natural Fabrics', desc: 'We prioritize pure cotton, silk, linen and organic fabrics — gentle on your skin and the environment.' },
+            { icon: '✦', title: 'Authentic & Original', desc: 'No mass-produced copies. Each piece is authentic, unique and sourced directly from its weaving community.' },
+            { icon: '🚚', title: 'Free Shipping & Returns', desc: 'Free shipping on orders above ₹999 and hassle-free 15-day returns across India.' }
+          ]; %>
+          <% promises.forEach((item, i) => { %>
+          <div class="text-center fade-up" style="animation-delay:<%= i * 0.1 %>s">
+            <div class="text-4xl mb-5"><%= item.icon %></div>
+            <h3 class="font-display font-light text-xl text-[var(--color-cream)] mb-3"><%= item.title %></h3>
+            <p class="font-body text-sm text-[var(--color-sandal-light)] leading-relaxed"><%= item.desc %></p>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         INSTAGRAM / SOCIAL SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 lg:py-24 bg-[var(--color-cream)]">
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+        <div class="text-center mb-12 fade-up">
+          <p class="section-label mb-2">@manjurasaadaigal</p>
+          <h2 class="section-title text-4xl lg:text-5xl">Style Journal</h2>
+          <p class="font-body text-sm text-[var(--color-text-muted)] mt-3">Follow us on Instagram for daily style inspiration</p>
+        </div>
+
+        <div class="grid grid-cols-3 lg:grid-cols-6 gap-2 lg:gap-3">
+          <% const instaImgs = [
+            'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&auto=format&fit=crop&q=80',
+            'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400&auto=format&fit=crop&q=80',
+            'https://images.unsplash.com/photo-1594938298603-c8148c4b5ca4?w=400&auto=format&fit=crop&q=80',
+            'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&auto=format&fit=crop&q=80',
+            'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=400&auto=format&fit=crop&q=80',
+            'https://images.unsplash.com/photo-1585944672832-a1f04bc93c0e?w=400&auto=format&fit=crop&q=80'
+          ]; %>
+          <% instaImgs.forEach((img, i) => { %>
+          <a href="https://instagram.com/manjurasaadaigal" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden aspect-square block fade-up" style="animation-delay:<%= i * 0.06 %>s">
+            <img src="<%= img %>" alt="Manjura's Aadaigal on Instagram" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+            <div class="absolute inset-0 bg-[var(--color-maroon)] opacity-0 group-hover:opacity-30 transition-opacity duration-300 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+          </a>
+          <% }) %>
+        </div>
+
+        <div class="text-center mt-8 fade-up">
+          <a href="https://instagram.com/manjurasaadaigal" target="_blank" rel="noopener noreferrer" class="btn-outline inline-flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <span>Follow @manjurasaadaigal</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         TESTIMONIALS
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 lg:py-24 bg-[var(--color-cream-dark)]">
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+        <div class="text-center mb-14 fade-up">
+          <p class="section-label mb-2">Customer Love</p>
+          <h2 class="section-title text-4xl lg:text-5xl">What Our<br/><em class="italic">Customers Say</em></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <% const reviews = [
+            { name: 'Priya Venkataraman', loc: 'Chennai', rating: 5, review: 'The Kanjivaram silk saree I ordered is breathtaking. The zari work is so intricate and the colour is exactly as shown. Will definitely order again!', product: 'Kanjivaram Silk Saree' },
+            { name: 'Ananya Krishnamurthy', loc: 'Bangalore', rating: 5, review: 'I was gifted a kurti set for my birthday and absolutely love it. The fabric is so soft and the fit is perfect. Manjura\'s Aadaigal is now my go-to!' , product: 'Chanderi Block Print Kurti' },
+            { name: 'Divya Subramaniam', loc: 'Coimbatore', rating: 5, review: 'Ordered for Diwali — the packaging alone is a delight! The chudidar was beautifully crafted and compliments were non-stop. Outstanding quality.', product: 'Anarkali Embroidered Set' }
+          ]; %>
+          <% reviews.forEach((r, i) => { %>
+          <div class="bg-[var(--color-cream)] p-8 fade-up" style="animation-delay:<%= i * 0.1 %>s">
+            <!-- Stars -->
+            <div class="flex gap-1 mb-5">
+              <% for(let s = 0; s < r.rating; s++) { %><span class="text-[var(--color-gold)] text-sm">★</span><% } %>
+            </div>
+            <p class="font-display font-light text-lg text-[var(--color-text-primary)] leading-snug italic mb-6">"<%= r.review %>"</p>
+            <div class="border-t border-[var(--color-cream-deeper)] pt-4">
+              <p class="font-body font-medium text-sm text-[var(--color-text-primary)]"><%= r.name %></p>
+              <p class="font-body text-xs text-[var(--color-text-muted)] mt-0.5"><%= r.loc %> · <%= r.product %></p>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         NEWSLETTER CTA
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 lg:py-24 bg-[var(--color-cream-deeper)]">
+      <div class="max-w-2xl mx-auto px-6 text-center fade-up">
+        <p class="section-label mb-4">Join the Inner Circle</p>
+        <h2 class="section-title text-4xl lg:text-5xl mb-4">
+          Be the First to<br/><em class="italic">Know</em>
+        </h2>
+        <p class="font-body text-[var(--color-text-secondary)] mb-8 leading-relaxed">
+          Subscribe for exclusive new arrivals, style tips, artisan stories and members-only offers.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" action="/newsletter" method="POST">
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+            class="luxury-input flex-1"
+          />
+          <button type="submit" class="btn-primary whitespace-nowrap"><span>Subscribe</span></button>
+        </form>
+        <p class="font-body text-xs text-[var(--color-text-muted)] mt-4">No spam, ever. Unsubscribe anytime.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <%- include('./partials/footer') %>
+  <%- include('./partials/mobile-menu') %>
+  <%- include('./partials/search-panel') %>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

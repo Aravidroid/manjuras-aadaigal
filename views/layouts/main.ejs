@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6B1A1A" />
+
+  <title><%= title || "Manjura's Aadaigal — Premium Indian Women's Fashion" %></title>
+  <meta name="description" content="<%= description || "Discover exquisite Indian ethnic wear — sarees, kurtis, chudidars and more. Manjura's Aadaigal brings you the finest in women's Indian fashion." %>" />
+  <meta name="keywords" content="Indian ethnic wear, sarees, kurtis, chudidars, women fashion India, Manjura's Aadaigal" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="<%= title || "Manjura's Aadaigal" %>" />
+  <meta property="og:description" content="<%= description || 'Premium Indian Women\'s Fashion' %>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://manjurasaadaigal.in" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+</head>
+<body class="bg-cream">
+
+  <!-- Announcement Bar -->
+  <%- include('../partials/announcement-bar') %>
+
+  <!-- Header -->
+  <%- include('../partials/header') %>
+
+  <!-- Main Content -->
+  <main>
+    <%- body %>
+  </main>
+
+  <!-- Footer -->
+  <%- include('../partials/footer') %>
+
+  <!-- Mobile Menu Panel -->
+  <%- include('../partials/mobile-menu') %>
+
+  <!-- Search Panel -->
+  <%- include('../partials/search-panel') %>
+
+  <!-- Global Scripts -->
+  <script src="/js/script.js"></script>
+
+</body>
+</html>

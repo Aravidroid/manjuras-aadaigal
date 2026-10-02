@@ -1,0 +1,119 @@
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="bg-[var(--color-text-primary)] text-[var(--color-cream)]">
+
+  <!-- Main Footer -->
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12 pt-16 pb-12">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+
+      <!-- Brand Column -->
+      <div class="lg:col-span-2">
+        <div>
+          <div class="font-display font-light text-2xl tracking-[0.18em] text-[var(--color-sandal-light)] uppercase">Manjura's</div>
+          <div class="font-accent font-normal text-[0.65rem] tracking-[0.3em] text-[var(--color-sandal)] uppercase mt-0.5">Aadaigal</div>
+        </div>
+        <p class="mt-5 font-body text-sm text-[var(--color-warm-gray-light)] leading-relaxed max-w-xs">
+          Celebrating the timeless beauty of Indian craftsmanship. Each piece is curated with love for the modern Indian woman.
+        </p>
+        <!-- Newsletter -->
+        <div class="mt-6">
+          <p class="font-body text-xs font-medium tracking-[0.2em] uppercase text-[var(--color-sandal)] mb-3">Subscribe for Exclusive Offers</p>
+          <form class="flex gap-0" action="/newsletter" method="POST">
+            <input
+              type="email"
+              name="email"
+              placeholder="Your email address"
+              required
+              class="flex-1 px-4 py-2.5 bg-[rgba(255,255,255,0.07)] border border-[rgba(255,255,255,0.15)] font-body text-sm text-[var(--color-cream)] placeholder:text-[var(--color-warm-gray-light)] outline-none focus:border-[var(--color-sandal)] transition-colors"
+            />
+            <button type="submit" class="px-5 py-2.5 bg-[var(--color-maroon)] font-body text-xs font-medium tracking-[0.15em] uppercase text-[var(--color-cream)] hover:bg-[var(--color-maroon-light)] transition-colors">
+              Join
+            </button>
+          </form>
+        </div>
+        <!-- Social -->
+        <div class="mt-6 flex items-center gap-4">
+          <a href="#" aria-label="Instagram" class="w-9 h-9 border border-[rgba(255,255,255,0.2)] flex items-center justify-center text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal)] hover:border-[var(--color-sandal)] transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="w-9 h-9 border border-[rgba(255,255,255,0.2)] flex items-center justify-center text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal)] hover:border-[var(--color-sandal)] transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Pinterest" class="w-9 h-9 border border-[rgba(255,255,255,0.2)] flex items-center justify-center text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal)] hover:border-[var(--color-sandal)] transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" x2="12" y1="5" y2="19"/><path d="M5 12h14"/><path d="m5 7 7-5 7 5"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube" class="w-9 h-9 border border-[rgba(255,255,255,0.2)] flex items-center justify-center text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal)] hover:border-[var(--color-sandal)] transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Shop Links -->
+      <div>
+        <h4 class="font-body text-xs font-medium tracking-[0.25em] uppercase text-[var(--color-sandal)] mb-5">Shop</h4>
+        <ul class="space-y-3">
+          <li><a href="/new-arrivals" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">New Arrivals</a></li>
+          <li><a href="/category/sarees" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Sarees</a></li>
+          <li><a href="/category/kurtis" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Kurtis</a></li>
+          <li><a href="/category/chudidars" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Chudidars</a></li>
+          <li><a href="/category/dresses" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Dresses</a></li>
+          <li><a href="/collections" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Collections</a></li>
+          <li><a href="/sale" class="footer-link text-[var(--color-sandal)] hover:text-[var(--color-sandal-light)] transition-colors text-sm font-medium">Sale</a></li>
+        </ul>
+      </div>
+
+      <!-- Help Links -->
+      <div>
+        <h4 class="font-body text-xs font-medium tracking-[0.25em] uppercase text-[var(--color-sandal)] mb-5">Help</h4>
+        <ul class="space-y-3">
+          <li><a href="/contact" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Contact Us</a></li>
+          <li><a href="/faq" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">FAQ</a></li>
+          <li><a href="/shipping" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Shipping Info</a></li>
+          <li><a href="/returns" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Returns & Exchanges</a></li>
+          <li><a href="/size-guide" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Size Guide</a></li>
+          <li><a href="/care-guide" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Care Guide</a></li>
+          <li><a href="/track-order" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Track Order</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div>
+        <h4 class="font-body text-xs font-medium tracking-[0.25em] uppercase text-[var(--color-sandal)] mb-5">Company</h4>
+        <ul class="space-y-3">
+          <li><a href="/about" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">About Us</a></li>
+          <li><a href="/our-story" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Our Story</a></li>
+          <li><a href="/craftsmanship" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Craftsmanship</a></li>
+          <li><a href="/blog" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Style Journal</a></li>
+          <li><a href="/sustainability" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Sustainability</a></li>
+          <li><a href="/careers" class="footer-link text-[var(--color-warm-gray-light)] hover:text-[var(--color-sandal-light)] transition-colors text-sm">Careers</a></li>
+        </ul>
+        <!-- Contact -->
+        <div class="mt-8">
+          <h4 class="font-body text-xs font-medium tracking-[0.25em] uppercase text-[var(--color-sandal)] mb-3">Contact</h4>
+          <p class="text-sm text-[var(--color-warm-gray-light)]">hello@manjurasaadaigal.in</p>
+          <p class="text-sm text-[var(--color-warm-gray-light)] mt-1">+91 98765 43210</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Divider -->
+    <div class="mt-12 pt-8 border-t border-[rgba(255,255,255,0.1)]">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="font-body text-xs text-[var(--color-warm-gray)] tracking-wider">
+          © <%= new Date().getFullYear() %> Manjura's Aadaigal. All rights reserved.
+        </p>
+        <div class="flex items-center gap-6">
+          <a href="/privacy" class="font-body text-xs text-[var(--color-warm-gray)] hover:text-[var(--color-sandal-light)] transition-colors tracking-wider">Privacy Policy</a>
+          <a href="/terms" class="font-body text-xs text-[var(--color-warm-gray)] hover:text-[var(--color-sandal-light)] transition-colors tracking-wider">Terms of Service</a>
+          <a href="/sitemap" class="font-body text-xs text-[var(--color-warm-gray)] hover:text-[var(--color-sandal-light)] transition-colors tracking-wider">Sitemap</a>
+        </div>
+        <p class="font-body text-xs text-[var(--color-warm-gray)] tracking-wider">Made with ♥ in India</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>

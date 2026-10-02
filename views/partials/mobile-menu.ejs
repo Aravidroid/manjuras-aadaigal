@@ -1,0 +1,76 @@
+<!-- ══════════════════════════════════════
+     MOBILE MENU PANEL
+══════════════════════════════════════ -->
+<div id="mobile-menu-panel" class="overlay-panel" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="overlay-panel-backdrop" id="mobile-menu-backdrop"></div>
+  <div class="slide-panel-left flex flex-col">
+
+    <!-- Panel Header -->
+    <div class="flex items-center justify-between px-6 py-5 border-b border-[var(--color-cream-deeper)]">
+      <div>
+          <div class="brand-wordmark text-lg tracking-[0.18em]">Manjura's</div>
+          <div class="brand-wordmark-sm mt-0.5">Aadaigal</div>
+        </div>
+      <button id="mobile-menu-close" aria-label="Close menu" class="p-2 text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Nav Links -->
+    <nav class="flex-1 px-6 py-8">
+      <ul class="space-y-1">
+        <li>
+          <a href="/new-arrivals" class="flex items-center justify-between py-3.5 border-b border-[var(--color-cream-deeper)] font-body text-sm font-medium tracking-[0.18em] uppercase text-[var(--color-maroon)] hover:opacity-70 transition-opacity">
+            <span>New Arrivals</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6" /></svg>
+          </a>
+        </li>
+        <li>
+          <a href="/category/sarees" class="flex items-center justify-between py-3.5 border-b border-[var(--color-cream-deeper)] font-body text-sm tracking-[0.12em] uppercase text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors">
+            <span>Sarees</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6" /></svg>
+          </a>
+        </li>
+        <li>
+          <a href="/category/kurtis" class="flex items-center justify-between py-3.5 border-b border-[var(--color-cream-deeper)] font-body text-sm tracking-[0.12em] uppercase text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors">
+            <span>Kurtis</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6" /></svg>
+          </a>
+        </li>
+        <li>
+          <a href="/category/chudidars" class="flex items-center justify-between py-3.5 border-b border-[var(--color-cream-deeper)] font-body text-sm tracking-[0.12em] uppercase text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors">
+            <span>Chudidars</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6" /></svg>
+          </a>
+        </li>
+        <li>
+          <a href="/category/dresses" class="flex items-center justify-between py-3.5 border-b border-[var(--color-cream-deeper)] font-body text-sm tracking-[0.12em] uppercase text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors">
+            <span>Dresses</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6" /></svg>
+          </a>
+        </li>
+        <li>
+          <a href="/collections" class="flex items-center justify-between py-3.5 border-b border-[var(--color-cream-deeper)] font-body text-sm tracking-[0.12em] uppercase text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors">
+            <span>Collections</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6" /></svg>
+          </a>
+        </li>
+        <li>
+          <a href="/sale" class="flex items-center justify-between py-3.5 font-body text-sm font-semibold tracking-[0.12em] uppercase text-[var(--color-maroon)] hover:opacity-70 transition-opacity">
+            <span>Sale</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6" /></svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Bottom Actions -->
+    <div class="px-6 py-6 border-t border-[var(--color-cream-deeper)] space-y-3">
+      <a href="/account" class="btn-outline w-full text-center block"><span>My Account</span></a>
+      <a href="/cart" class="btn-primary w-full text-center block"><span>View Cart</span></a>
+    </div>
+
+  </div>
+</div>

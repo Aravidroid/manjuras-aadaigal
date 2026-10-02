@@ -1,0 +1,98 @@
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header id="site-header" class="sticky top-0 z-50 bg-cream border-b border-[var(--color-cream-deeper)] transition-all duration-300">
+
+  <!-- Top Header Row -->
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+
+      <!-- Left: Mobile Menu + Nav (desktop) -->
+      <div class="flex items-center gap-6">
+        <!-- Mobile hamburger -->
+        <button
+          id="mobile-menu-btn"
+          aria-label="Open menu"
+          class="lg:hidden flex flex-col gap-1.5 p-1 text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors"
+        >
+          <span class="block w-6 h-px bg-current transition-all duration-300" id="ham-1"></span>
+          <span class="block w-4 h-px bg-current transition-all duration-300" id="ham-2"></span>
+          <span class="block w-6 h-px bg-current transition-all duration-300" id="ham-3"></span>
+        </button>
+      </div>
+
+      <!-- Centre: Wordmark -->
+      <a href="/" class="absolute left-1/2 -translate-x-1/2 text-center">
+        <div class="brand-wordmark text-xl lg:text-2xl leading-none tracking-[0.18em]">Manjura's</div>
+        <div class="brand-wordmark-sm mt-0.5">Aadaigal</div>
+      </a>
+
+      <!-- Right: Icons -->
+      <div class="flex items-center gap-4 lg:gap-5">
+
+        <!-- Search -->
+        <button
+          id="search-btn"
+          aria-label="Search"
+          class="p-1 text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors duration-200"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+        </button>
+
+        <!-- Account -->
+        <a
+          href="<%= user ? '/account' : '/login' %>"
+          aria-label="<%= user ? 'My Account' : 'Login' %>"
+          class="p-1 text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors duration-200"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M20 21a8 8 0 1 0-16 0"/>
+          </svg>
+        </a>
+
+        <!-- Cart -->
+        <a
+          href="/cart"
+          aria-label="Shopping Cart"
+          class="p-1 text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors duration-200 relative"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <% if (cartCount > 0) { %>
+          <span class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-[var(--color-maroon)] text-[var(--color-cream)] text-[0.55rem] font-semibold flex items-center justify-center">
+            <%= cartCount %>
+          </span>
+          <% } %>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Navigation -->
+  <nav class="hidden lg:block border-t border-[var(--color-cream-deeper)]">
+    <div class="max-w-[1440px] mx-auto px-12">
+      <ul class="flex items-center justify-center gap-10 h-11">
+        <li><a href="/new-arrivals" class="nav-link">New Arrivals</a></li>
+        <li><a href="/category/sarees" class="nav-link">Sarees</a></li>
+        <li><a href="/category/kurtis" class="nav-link">Kurtis</a></li>
+        <li><a href="/category/chudidars" class="nav-link">Chudidars</a></li>
+        <li><a href="/category/dresses" class="nav-link">Dresses</a></li>
+        <li><a href="/collections" class="nav-link">Collections</a></li>
+        <li>
+          <a href="/sale" class="nav-link" style="color: var(--color-maroon); font-weight: 600;">
+            Sale
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+</header>

@@ -1,0 +1,41 @@
+<!-- ══════════════════════════════════════
+     SEARCH PANEL
+══════════════════════════════════════ -->
+<div id="search-panel" class="overlay-panel" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="overlay-panel-backdrop" id="search-backdrop"></div>
+  <div class="absolute top-0 left-0 right-0 bg-cream shadow-luxury transform -translate-y-full transition-transform duration-450 ease-in-out" id="search-dropdown">
+    <div class="max-w-[700px] mx-auto px-6 py-8 lg:py-12">
+
+      <div class="flex items-center gap-4 border-b-2 border-[var(--color-maroon)] pb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-maroon)] flex-shrink-0">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Search sarees, kurtis, chudidars..."
+          autocomplete="off"
+          class="flex-1 bg-transparent outline-none font-body text-lg text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] placeholder:text-base"
+        />
+        <button id="search-close" aria-label="Close search" class="p-1 text-[var(--color-warm-gray)] hover:text-[var(--color-maroon)] transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="mt-6">
+        <p class="section-label mb-4">Popular Searches</p>
+        <div class="flex flex-wrap gap-2">
+          <a href="/search?q=silk+saree" class="px-4 py-2 border border-[var(--color-cream-deeper)] font-body text-sm text-[var(--color-text-secondary)] hover:border-[var(--color-maroon)] hover:text-[var(--color-maroon)] transition-all rounded-sm">Silk Saree</a>
+          <a href="/search?q=cotton+kurti" class="px-4 py-2 border border-[var(--color-cream-deeper)] font-body text-sm text-[var(--color-text-secondary)] hover:border-[var(--color-maroon)] hover:text-[var(--color-maroon)] transition-all rounded-sm">Cotton Kurti</a>
+          <a href="/search?q=salwar+kameez" class="px-4 py-2 border border-[var(--color-cream-deeper)] font-body text-sm text-[var(--color-text-secondary)] hover:border-[var(--color-maroon)] hover:text-[var(--color-maroon)] transition-all rounded-sm">Salwar Kameez</a>
+          <a href="/search?q=anarkali" class="px-4 py-2 border border-[var(--color-cream-deeper)] font-body text-sm text-[var(--color-text-secondary)] hover:border-[var(--color-maroon)] hover:text-[var(--color-maroon)] transition-all rounded-sm">Anarkali</a>
+          <a href="/search?q=festive+wear" class="px-4 py-2 border border-[var(--color-cream-deeper)] font-body text-sm text-[var(--color-text-secondary)] hover:border-[var(--color-maroon)] hover:text-[var(--color-maroon)] transition-all rounded-sm">Festive Wear</a>
+          <a href="/new-arrivals" class="px-4 py-2 border border-[var(--color-cream-deeper)] font-body text-sm text-[var(--color-text-secondary)] hover:border-[var(--color-maroon)] hover:text-[var(--color-maroon)] transition-all rounded-sm">New Arrivals</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
