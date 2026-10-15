@@ -560,6 +560,99 @@
     border-color: var(--color-maroon);
     color: var(--color-cream);
   }
+
+  /* ── Option 3: Zari Thread Sparkle & Ripple ── */
+  .zari-sparkle-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 20px;
+    color: var(--color-gold);
+    line-height: 1;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 8px rgba(201, 169, 110, 0.8), 0 0 16px rgba(201, 169, 110, 0.45);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), font-size 0.25s ease, color 0.25s ease;
+    will-change: transform;
+    user-select: none;
+  }
+
+  .zari-sparkle-cursor.cursor-hover {
+    font-size: 28px;
+    color: var(--color-maroon-light);
+    text-shadow: 0 0 10px rgba(139, 42, 42, 0.7), 0 0 18px rgba(201, 169, 110, 0.6);
+  }
+
+  .zari-trail-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-gold-light) 0%, var(--color-gold) 60%, transparent 100%);
+    box-shadow: 0 0 6px var(--color-gold);
+    transform: translate(-50%, -50%);
+    animation: particle-fade 0.55s ease-out forwards;
+  }
+
+  @keyframes particle-fade {
+    0% {
+      opacity: 0.9;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.2) translateY(6px);
+    }
+  }
+
+  /* Click water-ripple in brass uruli */
+  .zari-click-ripple {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9997;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-gold);
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple-spread 0.65s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  }
+
+  @keyframes ripple-spread {
+    0% {
+      width: 10px;
+      height: 10px;
+      opacity: 0.9;
+      transform: translate(-50%, -50%) scale(0.4);
+    }
+    100% {
+      width: 65px;
+      height: 65px;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.6);
+    }
+  }
+
+  /* ── Fly-to-Cart clone ── */
+  .flying-cart-clone {
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(107, 26, 26, 0.25);
+    border: 1.5px solid var(--color-gold);
+    transition: all 0.75s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  @keyframes cart-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.35) rotate(-6deg); }
+  }
+
+  .animate-cart-bounce {
+    animation: cart-bounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
 }
 
 /* ────────────────────────────────────────────────

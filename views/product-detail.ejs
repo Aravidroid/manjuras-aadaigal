@@ -1,0 +1,291 @@
+<%
+  const pageTitle = typeof title !== 'undefined' ? title : `${product.name} | Manjura's Aadaigal`;
+  const singleWhatsAppMsg = `*Namaskaram Manjura's Aadaigal!* 🌸\nI am interested in buying *${product.name}* (Price: ₹${product.price.toLocaleString('en-IN')}).\nProduct Link: https://manjurasaadaigal.in/product/${product.slug}\n\nCould you please confirm availability and provide details for ordering?`;
+  const singleWhatsAppUrl = `https://wa.me/${(whatsappPhone || '919876543210').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(singleWhatsAppMsg)}`;
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#6B1A1A"/>
+  <title><%= pageTitle %></title>
+  <meta name="description" content="<%= product.shortDesc %>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml"/>
+</head>
+<body class="bg-cream">
+
+  <%- include('./partials/announcement-bar') %>
+  <%- include('./partials/header') %>
+
+  <main class="py-10 lg:py-14">
+    <div class="max-w-[1360px] mx-auto px-6 lg:px-12">
+
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-2 text-xs font-body text-[var(--color-text-muted)] mb-8">
+        <a href="/" class="hover:text-[var(--color-maroon)] transition-colors">Home</a>
+        <span>/</span>
+        <a href="/category/<%= product.category %>" class="hover:text-[var(--color-maroon)] transition-colors capitalize"><%= product.categoryName %></a>
+        <span>/</span>
+        <span class="text-[var(--color-maroon)] truncate max-w-xs"><%= product.name %></span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        
+        <!-- Left: Image Gallery -->
+        <div class="lg:col-span-7 flex flex-col-reverse md:flex-row gap-4">
+          <!-- Thumbnail strip -->
+          <% if (product.images.length > 1) { %>
+            <div class="flex md:flex-col gap-3 overflow-x-auto md:w-20 flex-shrink-0">
+              <% product.images.forEach((img, idx) => { %>
+                <button
+                  type="button"
+                  class="pdp-thumb border <%= idx === 0 ? 'border-[var(--color-maroon)]' : 'border-[var(--color-cream-deeper)]' %> w-16 h-20 md:w-full md:h-24 overflow-hidden flex-shrink-0"
+                  onclick="changePdpImage('<%= img %>', this)"
+                >
+                  <img src="<%= img %>" alt="<%= product.name %> thumbnail <%= idx + 1 %>" class="w-full h-full object-cover"/>
+                </button>
+              <% }) %>
+            </div>
+          <% } %>
+
+          <!-- Main Showcase Image -->
+          <div class="flex-1 bg-[var(--color-cream-dark)] relative overflow-hidden group aspect-[3/4] max-h-[720px]">
+            <img
+              id="pdp-main-image"
+              src="<%= product.images[0] %>"
+              alt="<%= product.name %>"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <% if (product.badge) { %>
+              <div class="absolute top-4 left-4 z-10">
+                <% if (product.badge === 'Sale') { %><span class="badge-sale"><%= product.badge %></span>
+                <% } else { %><span class="badge-new"><%= product.badge %></span><% } %>
+              </div>
+            <% } %>
+          </div>
+        </div>
+
+        <!-- Right: Details & Purchase Options -->
+        <div class="lg:col-span-5 space-y-6">
+          <div>
+            <p class="section-label mb-2"><%= product.craft || product.categoryName %></p>
+            <h1 class="font-display font-light text-3xl lg:text-4xl text-[var(--color-text-primary)] leading-tight">
+              <%= product.name %>
+            </h1>
+          </div>
+
+          <!-- Price -->
+          <div class="flex items-baseline gap-3 pb-4 border-b border-[var(--color-cream-deeper)]">
+            <span class="font-body font-semibold text-2xl lg:text-3xl text-[var(--color-maroon)]">
+              ₹<%= product.price.toLocaleString('en-IN') %>
+            </span>
+            <% if (product.originalPrice) { %>
+              <span class="font-body text-base text-[var(--color-text-muted)] line-through">
+                ₹<%= product.originalPrice.toLocaleString('en-IN') %>
+              </span>
+              <span class="font-body text-xs text-green-700 font-semibold px-2 py-0.5 bg-green-50 rounded-sm">
+                <%= Math.round((1 - product.price/product.originalPrice)*100) %>% OFF
+              </span>
+            <% } %>
+            <span class="text-xs text-[var(--color-text-muted)] ml-auto">Inclusive of all taxes</span>
+          </div>
+
+          <p class="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed">
+            <%= product.description %>
+          </p>
+
+          <!-- Add to Cart Form -->
+          <form id="pdp-add-cart-form" action="/cart/add" method="POST" class="space-y-6">
+            <input type="hidden" name="productId" value="<%= product.id %>" />
+
+            <!-- Sizes Selection (Kurtis / Salwars) -->
+            <% if (product.options && product.options.hasSizes && product.options.sizes?.length) { %>
+              <div class="space-y-2">
+                <label class="block font-body text-xs font-semibold uppercase tracking-wider text-[var(--color-text-primary)]">
+                  Select Size (Bust):
+                </label>
+                <div class="flex flex-wrap gap-2.5">
+                  <% product.options.sizes.forEach((s, idx) => { %>
+                    <label class="cursor-pointer">
+                      <input
+                        type="radio"
+                        name="size"
+                        value="<%= s %>"
+                        <%= idx === 0 ? 'checked' : '' %>
+                        class="peer sr-only"
+                      />
+                      <span class="inline-block px-3.5 py-2 border border-[var(--color-cream-deeper)] text-xs font-body uppercase text-[var(--color-text-primary)] peer-checked:border-[var(--color-maroon)] peer-checked:bg-[var(--color-maroon)] peer-checked:text-[var(--color-cream)] transition-all">
+                        <%= s %>
+                      </span>
+                    </label>
+                  <% }) %>
+                </div>
+              </div>
+            <% } %>
+
+            <!-- Blouse Customization Options (South Indian Sarees) -->
+            <% if (product.options && product.options.hasBlouseOptions && product.options.blouseOptions?.length) { %>
+              <div class="space-y-2.5 p-4 bg-[var(--color-offwhite)] border border-[var(--color-cream-deeper)]">
+                <div class="flex items-center justify-between">
+                  <label class="font-body text-xs font-semibold uppercase tracking-wider text-[var(--color-maroon)]">
+                    Blouse & Saree Customization:
+                  </label>
+                  <span class="text-[0.65rem] text-[var(--color-text-muted)] font-body">Optional Tailoring</span>
+                </div>
+                <div class="space-y-2">
+                  <% product.options.blouseOptions.forEach((opt, idx) => { %>
+                    <label class="flex items-center justify-between p-2.5 border border-[var(--color-cream-deeper)] text-xs font-body cursor-pointer hover:border-[var(--color-maroon)] transition-colors">
+                      <div class="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          name="blouseOption"
+                          value="<%= opt.id %>"
+                          <%= idx === 0 ? 'checked' : '' %>
+                          class="accent-[var(--color-maroon)]"
+                        />
+                        <span class="text-[var(--color-text-primary)]"><%= opt.name %></span>
+                      </div>
+                      <span class="font-semibold text-[var(--color-maroon)]">
+                        <%= opt.price === 0 ? 'Included' : '+ ₹' + opt.price %>
+                      </span>
+                    </label>
+                  <% }) %>
+                </div>
+              </div>
+            <% } %>
+
+            <!-- Quantity & CTA Buttons -->
+            <div class="space-y-3 pt-2">
+              <div class="flex items-center gap-4">
+                <span class="font-body text-xs font-semibold uppercase tracking-wider text-[var(--color-text-primary)]">Quantity:</span>
+                <div class="flex items-center border border-[var(--color-cream-deeper)] bg-white">
+                  <button type="button" class="qty-btn" onclick="adjustPdpQty(-1)">−</button>
+                  <input type="number" id="pdp-qty-input" name="quantity" value="1" min="1" max="10" class="w-10 text-center font-body text-xs font-semibold bg-transparent outline-none" />
+                  <button type="button" class="qty-btn" onclick="adjustPdpQty(1)">+</button>
+                </div>
+              </div>
+
+              <!-- Button 1: Add to Cart (Slide-out drawer triggered via JS) -->
+              <button
+                type="submit"
+                id="pdp-add-cart-btn"
+                class="btn-primary w-full py-4 tracking-luxury text-xs"
+              >
+                <span>Add to Shopping Bag</span>
+              </button>
+
+              <!-- Button 2: Direct WhatsApp Buy / Inquiry -->
+              <a
+                href="<%= singleWhatsAppUrl %>"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full flex items-center justify-center gap-2.5 py-3.5 px-4 bg-[#25D366] text-white font-body text-xs font-semibold tracking-wider uppercase shadow-md hover:bg-[#1EBE5D] transition-all"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                <span>Direct WhatsApp Order / Inquiry</span>
+              </a>
+            </div>
+          </form>
+
+          <!-- Product Specification Table -->
+          <div class="pt-6 border-t border-[var(--color-cream-deeper)]">
+            <h3 class="font-body text-xs font-semibold uppercase tracking-wider text-[var(--color-text-primary)] mb-3">
+              Specifications & Craft Details
+            </h3>
+            <dl class="divide-y divide-[var(--color-cream-deeper)] text-xs font-body">
+              <div class="py-2 flex justify-between">
+                <dt class="text-[var(--color-text-muted)]">Fabric</dt>
+                <dd class="text-[var(--color-text-primary)] font-medium text-right"><%= product.fabric %></dd>
+              </div>
+              <div class="py-2 flex justify-between">
+                <dt class="text-[var(--color-text-muted)]">Craft / Technique</dt>
+                <dd class="text-[var(--color-text-primary)] font-medium text-right"><%= product.craft %></dd>
+              </div>
+              <div class="py-2 flex justify-between">
+                <dt class="text-[var(--color-text-muted)]">Color</dt>
+                <dd class="text-[var(--color-text-primary)] font-medium text-right"><%= product.color %></dd>
+              </div>
+              <div class="py-2 flex justify-between">
+                <dt class="text-[var(--color-text-muted)]">Length / Measurements</dt>
+                <dd class="text-[var(--color-text-primary)] font-medium text-right"><%= product.length %></dd>
+              </div>
+              <div class="py-2 flex justify-between">
+                <dt class="text-[var(--color-text-muted)]">Wash Care</dt>
+                <dd class="text-[var(--color-text-primary)] font-medium text-right"><%= product.washCare %></dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Trust highlights -->
+          <div class="p-4 bg-[var(--color-cream-dark)] border border-[var(--color-cream-deeper)] space-y-2 text-xs font-body text-[var(--color-text-secondary)]">
+            <p>✦ <strong>Authentic Weaving:</strong> Direct from Tamil Nadu & artisanal handloom clusters.</p>
+            <p>✦ <strong>Express Delivery:</strong> Dispatched in 24–48 hours via premium couriers.</p>
+            <p>✦ <strong>Customized Fit:</strong> WhatsApp support available for exact blouse measurements.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Related Products -->
+      <% if (relatedProducts && relatedProducts.length > 0) { %>
+        <div class="mt-20 pt-12 border-t border-[var(--color-cream-deeper)]">
+          <div class="text-center mb-10">
+            <p class="section-label mb-2">You May Also Cherish</p>
+            <h2 class="section-title text-3xl">Matching Creations</h2>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+            <% relatedProducts.forEach(rel => { %>
+              <div class="product-card group">
+                <div class="product-card-image">
+                  <img src="<%= rel.images[0] %>" alt="<%= rel.name %>" loading="lazy" />
+                  <div class="product-card-actions">
+                    <a href="/product/<%= rel.slug %>" class="product-card-quick-add">View Details</a>
+                  </div>
+                </div>
+                <div class="p-3 bg-[var(--color-offwhite)]">
+                  <a href="/product/<%= rel.slug %>">
+                    <h3 class="font-body font-medium text-sm text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors truncate"><%= rel.name %></h3>
+                  </a>
+                  <div class="mt-1 font-body font-semibold text-sm text-[var(--color-maroon)]">
+                    ₹<%= rel.price.toLocaleString('en-IN') %>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      <% } %>
+
+    </div>
+  </main>
+
+  <%- include('./partials/footer') %>
+  <%- include('./partials/mobile-menu') %>
+  <%- include('./partials/search-panel') %>
+  <%- include('./partials/cart-drawer') %>
+  <%- include('./partials/whatsapp-float') %>
+
+  <script src="/js/script.js"></script>
+  <script>
+    function changePdpImage(src, btn) {
+      document.getElementById('pdp-main-image').src = src;
+      document.querySelectorAll('.pdp-thumb').forEach(el => el.classList.remove('border-[var(--color-maroon)]'));
+      btn.classList.add('border-[var(--color-maroon)]');
+    }
+
+    function adjustPdpQty(delta) {
+      const input = document.getElementById('pdp-qty-input');
+      const val = parseInt(input.value, 10) || 1;
+      input.value = Math.max(1, val + delta);
+    }
+  </script>
+</body>
+</html>

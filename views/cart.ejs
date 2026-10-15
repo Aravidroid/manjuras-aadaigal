@@ -1,0 +1,233 @@
+<%
+  const pageTitle = typeof title !== 'undefined' ? title : "Shopping Bag | Manjura's Aadaigal";
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#6B1A1A"/>
+  <title><%= pageTitle %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml"/>
+</head>
+<body class="bg-cream">
+
+  <%- include('./partials/announcement-bar') %>
+  <%- include('./partials/header') %>
+
+  <main class="py-12 lg:py-16">
+    <div class="max-w-[1200px] mx-auto px-6 lg:px-12">
+
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-2 text-xs font-body text-[var(--color-text-muted)] mb-8">
+        <a href="/" class="hover:text-[var(--color-maroon)] transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-[var(--color-maroon)]">Shopping Bag</span>
+      </nav>
+
+      <div class="border-b border-[var(--color-cream-deeper)] pb-6 mb-10 flex flex-wrap items-baseline justify-between gap-4">
+        <div>
+          <p class="section-label mb-1">Your Selection</p>
+          <h1 class="font-display font-light text-4xl lg:text-5xl text-[var(--color-text-primary)]">Shopping Bag</h1>
+        </div>
+        <p class="font-body text-sm text-[var(--color-text-secondary)]">
+          Total items: <span class="font-semibold text-[var(--color-maroon)]"><%= totals.totalItems %></span>
+        </p>
+      </div>
+
+      <% if (cart.items.length === 0) { %>
+        <!-- Empty State -->
+        <div class="text-center py-20 bg-[var(--color-offwhite)] border border-[var(--color-cream-deeper)] max-w-2xl mx-auto p-8">
+          <div class="w-16 h-16 mx-auto mb-5 rounded-full bg-[var(--color-cream-dark)] flex items-center justify-center text-[var(--color-sandal)]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          </div>
+          <h2 class="font-display text-3xl text-[var(--color-text-primary)] mb-2">Your Bag is Empty</h2>
+          <p class="font-body text-sm text-[var(--color-text-muted)] max-w-sm mx-auto mb-8">
+            You haven't added any sarees or ethnic attire yet. Discover our latest handpicked weaves!
+          </p>
+          <a href="/products" class="btn-primary">
+            <span>Explore Collections</span>
+          </a>
+        </div>
+      <% } else { %>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Left: Cart Items List -->
+          <div class="lg:col-span-8 space-y-6">
+
+            <!-- Free shipping banner -->
+            <div class="p-4 bg-[var(--color-cream-dark)] border border-[var(--color-sandal-light)] flex items-center justify-between text-xs font-body text-[var(--color-maroon)]">
+              <span>✦ Free Express Delivery across India on orders above ₹999</span>
+              <span class="font-semibold"><%= totals.shipping === 0 ? '✓ Qualified for FREE shipping' : 'Add items worth ₹' + (999 - totals.subtotal) + ' for free shipping' %></span>
+            </div>
+
+            <!-- Items Loop -->
+            <div class="bg-[var(--color-offwhite)] border border-[var(--color-cream-deeper)] divide-y divide-[var(--color-cream-deeper)]">
+              <% cart.items.forEach(item => { %>
+                <div class="p-6 flex flex-col sm:flex-row gap-5 items-start sm:items-center justify-between" id="cart-row-<%= item.key %>">
+                  
+                  <!-- Product Image & Details -->
+                  <div class="flex gap-4 items-center flex-1">
+                    <a href="/product/<%= item.slug %>" class="w-20 h-24 flex-shrink-0 bg-[var(--color-cream-dark)] overflow-hidden">
+                      <img src="<%= item.image %>" alt="<%= item.name %>" class="w-full h-full object-cover"/>
+                    </a>
+                    <div>
+                      <a href="/product/<%= item.slug %>" class="font-display text-xl text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors leading-snug">
+                        <%= item.name %>
+                      </a>
+                      <div class="text-xs font-body text-[var(--color-text-muted)] mt-1 space-y-0.5">
+                        <% if (item.size) { %>
+                          <p>Size: <span class="font-medium text-[var(--color-text-primary)]"><%= item.size %></span></p>
+                        <% } %>
+                        <% if (item.optionName) { %>
+                          <p>Custom: <span class="font-medium text-[var(--color-text-primary)]"><%= item.optionName %></span></p>
+                        <% } %>
+                      </div>
+                      <div class="font-body text-sm font-semibold text-[var(--color-maroon)] mt-2">
+                        ₹<%= (item.price + (item.optionPrice || 0)).toLocaleString('en-IN') %>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Quantity Controls & Remove -->
+                  <div class="flex items-center gap-6 self-end sm:self-center">
+                    
+                    <!-- Qty Selector -->
+                    <div class="flex items-center border border-[var(--color-cream-deeper)] bg-white">
+                      <form action="/cart/update" method="POST" class="inline">
+                        <input type="hidden" name="key" value="<%= item.key %>" />
+                        <input type="hidden" name="delta" value="-1" />
+                        <button type="submit" class="qty-btn" aria-label="Decrease quantity">−</button>
+                      </form>
+                      <span class="w-9 text-center font-body text-xs font-semibold"><%= item.quantity %></span>
+                      <form action="/cart/update" method="POST" class="inline">
+                        <input type="hidden" name="key" value="<%= item.key %>" />
+                        <input type="hidden" name="delta" value="1" />
+                        <button type="submit" class="qty-btn" aria-label="Increase quantity">+</button>
+                      </form>
+                    </div>
+
+                    <!-- Item Total -->
+                    <div class="text-right min-w-[5.5rem]">
+                      <div class="font-body font-semibold text-base text-[var(--color-text-primary)]">
+                        ₹<%= item.itemTotal.toLocaleString('en-IN') %>
+                      </div>
+                      <form action="/cart/remove" method="POST" class="inline mt-1">
+                        <input type="hidden" name="key" value="<%= item.key %>" />
+                        <button type="submit" class="text-[0.68rem] font-body text-red-600 hover:text-red-800 transition-colors uppercase tracking-wider underline">
+                          Remove
+                        </button>
+                      </form>
+                    </div>
+
+                  </div>
+
+                </div>
+              <% }) %>
+            </div>
+
+            <!-- Custom Order Note Form -->
+            <div class="bg-[var(--color-offwhite)] border border-[var(--color-cream-deeper)] p-6">
+              <label for="cart-order-note" class="block font-body text-xs font-medium uppercase tracking-wider text-[var(--color-text-secondary)] mb-2">
+                Special Tailoring / Delivery Instructions:
+              </label>
+              <form action="/cart/note" method="POST">
+                <textarea
+                  id="cart-order-note"
+                  name="note"
+                  rows="2"
+                  placeholder="e.g. Saree blouse stitching chest 38, please attach matching deep red tassels on pallu..."
+                  class="luxury-input w-full resize-none p-3 text-sm"
+                ><%= cart.note || '' %></textarea>
+                <div class="mt-2 text-right">
+                  <button type="submit" class="btn-ghost text-xs"><span>Save Note</span></button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+          <!-- Right: Order Summary & WhatsApp Direct Checkout -->
+          <div class="lg:col-span-4 bg-[var(--color-offwhite)] border border-[var(--color-cream-deeper)] p-6 lg:p-8 space-y-6 sticky top-28">
+            <h2 class="font-display text-2xl text-[var(--color-text-primary)] border-b border-[var(--color-cream-deeper)] pb-4">
+              Order Summary
+            </h2>
+
+            <div class="space-y-3 font-body text-sm text-[var(--color-text-secondary)]">
+              <div class="flex justify-between">
+                <span>Subtotal</span>
+                <span class="font-medium text-[var(--color-text-primary)]">₹<%= totals.subtotal.toLocaleString('en-IN') %></span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span>Shipping Estimate</span>
+                <span class="font-medium <%= totals.shipping === 0 ? 'text-green-700' : 'text-[var(--color-text-primary)]' %>">
+                  <%= totals.shipping === 0 ? 'FREE' : '₹' + totals.shipping %>
+                </span>
+              </div>
+              <div class="border-t border-[var(--color-cream-deeper)] pt-4 flex justify-between items-baseline">
+                <span class="font-medium text-base text-[var(--color-text-primary)]">Total</span>
+                <span class="font-display font-bold text-2xl text-[var(--color-maroon)]">₹<%= totals.grandTotal.toLocaleString('en-IN') %></span>
+              </div>
+            </div>
+
+            <!-- DIRECT WHATSAPP ORDER ACTION -->
+            <div class="pt-4 border-t border-[var(--color-cream-deeper)] space-y-3">
+              <p class="font-body text-xs text-[var(--color-text-muted)] text-center">
+                Skip complicated checkout forms. Order directly with our boutique via WhatsApp!
+              </p>
+
+              <a
+                href="/cart/whatsapp-checkout"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full flex items-center justify-center gap-3 py-3.5 px-4 bg-[#25D366] text-white font-body text-sm font-semibold tracking-wider uppercase shadow-lg hover:bg-[#1EBE5D] transition-all duration-300"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                <span>Checkout via WhatsApp</span>
+              </a>
+
+              <a href="/products" class="btn-outline w-full text-center block text-xs">
+                <span>Continue Shopping</span>
+              </a>
+            </div>
+
+            <!-- Guarantee Badges -->
+            <div class="pt-6 border-t border-[var(--color-cream-deeper)] space-y-2 text-xs font-body text-[var(--color-text-secondary)]">
+              <div class="flex items-center gap-2">
+                <span class="text-green-700">✓</span> 100% Authentic Handloom Guarantee
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-green-700">✓</span> Custom Blouse Stitching Available
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-green-700">✓</span> Personal Boutique Support via WhatsApp
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      <% } %>
+
+    </div>
+  </main>
+
+  <%- include('./partials/footer') %>
+  <%- include('./partials/mobile-menu') %>
+  <%- include('./partials/search-panel') %>
+  <%- include('./partials/cart-drawer') %>
+  <%- include('./partials/whatsapp-float') %>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

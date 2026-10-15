@@ -1,0 +1,103 @@
+<%
+  const pageTitle = typeof title !== 'undefined' ? title : "Collections | Manjura's Aadaigal";
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#6B1A1A"/>
+  <title><%= pageTitle %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml"/>
+</head>
+<body class="bg-cream">
+
+  <%- include('./partials/announcement-bar') %>
+  <%- include('./partials/header') %>
+
+  <main class="py-12 lg:py-16">
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-2 text-xs font-body text-[var(--color-text-muted)] mb-8">
+        <a href="/" class="hover:text-[var(--color-maroon)] transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-[var(--color-maroon)]"><%= categoryTitle %></span>
+      </nav>
+
+      <!-- Category Header -->
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="section-label mb-2">Curated Handloom & Silk</p>
+        <h1 class="font-display font-light text-4xl lg:text-5xl text-[var(--color-text-primary)] mb-4">
+          <%= categoryTitle %>
+        </h1>
+        <p class="font-body text-sm text-[var(--color-text-secondary)]">
+          Every piece is carefully selected for its weave, purity of thread, and enduring elegance.
+        </p>
+
+        <!-- Category Filter Pills -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-2">
+          <a href="/products" class="px-4 py-1.5 border <%= category === 'all' ? 'border-[var(--color-maroon)] bg-[var(--color-maroon)] text-white' : 'border-[var(--color-cream-deeper)] text-[var(--color-text-primary)] hover:border-[var(--color-maroon)]' %> text-xs font-body uppercase tracking-wider transition-all">All</a>
+          <a href="/category/sarees" class="px-4 py-1.5 border <%= category === 'sarees' ? 'border-[var(--color-maroon)] bg-[var(--color-maroon)] text-white' : 'border-[var(--color-cream-deeper)] text-[var(--color-text-primary)] hover:border-[var(--color-maroon)]' %> text-xs font-body uppercase tracking-wider transition-all">Sarees</a>
+          <a href="/category/kurtis" class="px-4 py-1.5 border <%= category === 'kurtis' ? 'border-[var(--color-maroon)] bg-[var(--color-maroon)] text-white' : 'border-[var(--color-cream-deeper)] text-[var(--color-text-primary)] hover:border-[var(--color-maroon)]' %> text-xs font-body uppercase tracking-wider transition-all">Kurtis</a>
+          <a href="/category/chudidars" class="px-4 py-1.5 border <%= category === 'chudidars' ? 'border-[var(--color-maroon)] bg-[var(--color-maroon)] text-white' : 'border-[var(--color-cream-deeper)] text-[var(--color-text-primary)] hover:border-[var(--color-maroon)]' %> text-xs font-body uppercase tracking-wider transition-all">Chudidars</a>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+        <% products.forEach((p) => { %>
+          <div class="product-card group">
+            <div class="product-card-image">
+              <img src="<%= p.images[0] %>" alt="<%= p.name %>" loading="lazy"/>
+              <% if (p.badge) { %>
+                <div class="absolute top-3 left-3 z-10">
+                  <% if (p.badge === 'Sale') { %><span class="badge-sale"><%= p.badge %></span>
+                  <% } else { %><span class="badge-new"><%= p.badge %></span><% } %>
+                </div>
+              <% } %>
+              <div class="product-card-actions">
+                <a href="/product/<%= p.slug %>" class="product-card-quick-add">Select Options</a>
+                <button
+                  type="button"
+                  onclick="quickAddToCart('<%= p.id %>', this)"
+                  class="w-10 flex items-center justify-center bg-[var(--color-cream)] text-[var(--color-maroon)] hover:bg-[var(--color-maroon)] hover:text-[var(--color-cream)] transition-all"
+                  title="Add directly to cart"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="p-3 lg:p-4 bg-[var(--color-offwhite)]">
+              <a href="/product/<%= p.slug %>">
+                <h3 class="font-body font-medium text-sm text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors leading-snug"><%= p.name %></h3>
+              </a>
+              <div class="mt-1.5 flex items-center gap-2">
+                <span class="font-body font-semibold text-sm text-[var(--color-maroon)]">₹<%= p.price.toLocaleString('en-IN') %></span>
+                <% if (p.originalPrice) { %>
+                  <span class="font-body text-xs text-[var(--color-text-muted)] line-through">₹<%= p.originalPrice.toLocaleString('en-IN') %></span>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+    </div>
+  </main>
+
+  <%- include('./partials/footer') %>
+  <%- include('./partials/mobile-menu') %>
+  <%- include('./partials/search-panel') %>
+  <%- include('./partials/cart-drawer') %>
+  <%- include('./partials/whatsapp-float') %>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

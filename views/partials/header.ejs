@@ -3,6 +3,9 @@
 ══════════════════════════════════════ -->
 <header id="site-header" class="sticky top-0 z-50 bg-cream border-b border-[var(--color-cream-deeper)] transition-all duration-300">
 
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress-bar" class="absolute top-0 left-0 h-[2.5px] bg-gradient-to-r from-[var(--color-gold)] via-[var(--color-maroon)] to-[var(--color-gold)] w-0 z-50 transition-all duration-75"></div>
+
   <!-- Top Header Row -->
   <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
     <div class="flex items-center justify-between h-16 lg:h-20">
@@ -57,6 +60,7 @@
         <!-- Cart -->
         <a
           href="/cart"
+          id="header-cart-btn"
           aria-label="Shopping Cart"
           class="p-1 text-[var(--color-text-primary)] hover:text-[var(--color-maroon)] transition-colors duration-200 relative"
         >
@@ -65,11 +69,9 @@
             <line x1="3" y1="6" x2="21" y2="6"/>
             <path d="M16 10a4 4 0 0 1-8 0"/>
           </svg>
-          <% if (cartCount > 0) { %>
-          <span class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-[var(--color-maroon)] text-[var(--color-cream)] text-[0.55rem] font-semibold flex items-center justify-center">
-            <%= cartCount %>
+          <span id="header-cart-badge" class="<%= cartCount > 0 ? '' : 'hidden ' %>absolute -top-0.5 -right-0.5 min-w-4 h-4 px-1 rounded-full bg-[var(--color-maroon)] text-[var(--color-cream)] text-[0.55rem] font-semibold flex items-center justify-center">
+            <%= cartCount || 0 %>
           </span>
-          <% } %>
         </a>
 
       </div>

@@ -5,15 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#6B1A1A" />
 
-  <title><%= title || "Manjura's Aadaigal — Premium Indian Women's Fashion" %></title>
-  <meta name="description" content="<%= description || "Discover exquisite Indian ethnic wear — sarees, kurtis, chudidars and more. Manjura's Aadaigal brings you the finest in women's Indian fashion." %>" />
-  <meta name="keywords" content="Indian ethnic wear, sarees, kurtis, chudidars, women fashion India, Manjura's Aadaigal" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="<%= title || "Manjura's Aadaigal" %>" />
-  <meta property="og:description" content="<%= description || 'Premium Indian Women\'s Fashion' %>" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://manjurasaadaigal.in" />
+  <title><%= typeof title !== 'undefined' ? title : "Manjura's Aadaigal — Premium Indian Women's Fashion" %></title>
+  <meta name="description" content="<%= typeof description !== 'undefined' ? description : "Discover exquisite Indian ethnic wear — sarees, kurtis, chudidars and more." %>" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,6 +40,12 @@
 
   <!-- Search Panel -->
   <%- include('../partials/search-panel') %>
+
+  <!-- Cart Slide-out Drawer -->
+  <%- include('../partials/cart-drawer') %>
+
+  <!-- Floating WhatsApp Chat -->
+  <%- include('../partials/whatsapp-float') %>
 
   <!-- Global Scripts -->
   <script src="/js/script.js"></script>

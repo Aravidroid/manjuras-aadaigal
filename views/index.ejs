@@ -190,7 +190,7 @@
           ]; %>
 
           <% newArrivals.forEach((p, i) => { %>
-          <div class="product-card group fade-up" style="animation-delay:<%= i * 0.08 %>s">
+          <div class="product-card group fade-up" data-delay="<%= (i * 0.08).toFixed(2) %>">
             <div class="product-card-image">
               <img src="<%= p.img %>" alt="<%= p.name %>" loading="lazy"/>
               <!-- Badge -->
@@ -200,8 +200,8 @@
               </div>
               <!-- Hover actions -->
               <div class="product-card-actions">
-                <a href="/product/<%= p.slug %>" class="product-card-quick-add">Add to Cart</a>
-                <a href="/product/<%= p.slug %>" class="w-10 flex items-center justify-center bg-[var(--color-cream)] text-[var(--color-maroon)] hover:bg-[var(--color-maroon)] hover:text-[var(--color-cream)] transition-all">
+                <a href="/product/<%= p.slug %>" class="product-card-quick-add">Select Options</a>
+                <a href="/product/<%= p.slug %>" class="w-10 flex items-center justify-center bg-[var(--color-cream)] text-[var(--color-maroon)] hover:bg-[var(--color-maroon)] hover:text-[var(--color-cream)] transition-all" title="View Details">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
                 </a>
               </div>
@@ -277,7 +277,7 @@
           ]; %>
 
           <% bestSellers.forEach((p, i) => { %>
-          <div class="product-card group fade-up" style="animation-delay:<%= i * 0.08 %>s">
+          <div class="product-card group fade-up" data-delay="<%= (i * 0.08).toFixed(2) %>">
             <div class="product-card-image">
               <img src="<%= p.img %>" alt="<%= p.name %>" loading="lazy"/>
               <% if (p.badge) { %>
@@ -287,8 +287,8 @@
               </div>
               <% } %>
               <div class="product-card-actions">
-                <a href="/product/<%= p.slug %>" class="product-card-quick-add">Add to Cart</a>
-                <a href="/product/<%= p.slug %>" class="w-10 flex items-center justify-center bg-[var(--color-cream)] text-[var(--color-maroon)] hover:bg-[var(--color-maroon)] hover:text-[var(--color-cream)] transition-all">
+                <a href="/product/<%= p.slug %>" class="product-card-quick-add">Select Options</a>
+                <a href="/product/<%= p.slug %>" class="w-10 flex items-center justify-center bg-[var(--color-cream)] text-[var(--color-maroon)] hover:bg-[var(--color-maroon)] hover:text-[var(--color-cream)] transition-all" title="View Details">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
                 </a>
               </div>
@@ -396,7 +396,7 @@
             { icon: '🚚', title: 'Free Shipping & Returns', desc: 'Free shipping on orders above ₹999 and hassle-free 15-day returns across India.' }
           ]; %>
           <% promises.forEach((item, i) => { %>
-          <div class="text-center fade-up" style="animation-delay:<%= i * 0.1 %>s">
+          <div class="text-center fade-up" data-delay="<%= (i * 0.1).toFixed(2) %>">
             <div class="text-4xl mb-5"><%= item.icon %></div>
             <h3 class="font-display font-light text-xl text-[var(--color-cream)] mb-3"><%= item.title %></h3>
             <p class="font-body text-sm text-[var(--color-sandal-light)] leading-relaxed"><%= item.desc %></p>
@@ -428,7 +428,7 @@
             'https://images.unsplash.com/photo-1585944672832-a1f04bc93c0e?w=400&auto=format&fit=crop&q=80'
           ]; %>
           <% instaImgs.forEach((img, i) => { %>
-          <a href="https://instagram.com/manjurasaadaigal" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden aspect-square block fade-up" style="animation-delay:<%= i * 0.06 %>s">
+          <a href="https://instagram.com/manjurasaadaigal" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden aspect-square block fade-up" data-delay="<%= (i * 0.06).toFixed(2) %>">
             <img src="<%= img %>" alt="Manjura's Aadaigal on Instagram" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
             <div class="absolute inset-0 bg-[var(--color-maroon)] opacity-0 group-hover:opacity-30 transition-opacity duration-300 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -465,7 +465,7 @@
             { name: 'Divya Subramaniam', loc: 'Coimbatore', rating: 5, review: 'Ordered for Diwali — the packaging alone is a delight! The chudidar was beautifully crafted and compliments were non-stop. Outstanding quality.', product: 'Anarkali Embroidered Set' }
           ]; %>
           <% reviews.forEach((r, i) => { %>
-          <div class="bg-[var(--color-cream)] p-8 fade-up" style="animation-delay:<%= i * 0.1 %>s">
+          <div class="bg-[var(--color-cream)] p-8 fade-up" data-delay="<%= (i * 0.1).toFixed(2) %>">
             <!-- Stars -->
             <div class="flex gap-1 mb-5">
               <% for(let s = 0; s < r.rating; s++) { %><span class="text-[var(--color-gold)] text-sm">★</span><% } %>
@@ -514,6 +514,8 @@
   <%- include('./partials/footer') %>
   <%- include('./partials/mobile-menu') %>
   <%- include('./partials/search-panel') %>
+  <%- include('./partials/cart-drawer') %>
+  <%- include('./partials/whatsapp-float') %>
 
   <script src="/js/script.js"></script>
 </body>
